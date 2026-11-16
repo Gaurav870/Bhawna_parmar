@@ -1,0 +1,2210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>For Bhawna Parmar ❤️ — I'm Sorry</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Playfair Display (Romantic Serif) & Plus Jakarta Sans (Clean Modern Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons for crisp minimal UI -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+          },
+          colors: {
+            cream: '#FDF8F5',
+            blush: '#FCE7EC',
+            roseSoft: '#F8C8D4',
+            roseDeep: '#D6456B',
+            roseDark: '#9F2B4B',
+            goldSoft: '#D4A373',
+            ink: '#2D1E24',
+            inkMuted: '#6E5660',
+          },
+          boxShadow: {
+            'card': '0 20px 45px -12px rgba(159, 43, 75, 0.16), 0 4px 16px -4px rgba(45, 30, 36, 0.06)',
+            'glass': '0 24px 60px -12px rgba(159, 43, 75, 0.22)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Base & Smooth Scrolling */
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: radial-gradient(circle at 15% 15%, #FCE7EC 0%, #FDF8F5 45%, #F9EFEA 100%);
+      color: #2D1E24;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100dvh;
+      overflow-x: hidden;
+    }
+
+    /* Ambient Floating Hearts Background */
+    .floating-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .ambient-particle {
+      position: absolute;
+      bottom: -40px;
+      opacity: 0.25;
+      animation: floatUp linear infinite;
+      user-select: none;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg) scale(0.9);
+        opacity: 0;
+      }
+      15% {
+        opacity: 0.28;
+      }
+      85% {
+        opacity: 0.22;
+      }
+      100% {
+        transform: translateY(-110vh) rotate(360deg) scale(1.1);
+        opacity: 0;
+      }
+    }
+
+    /* Glassmorphism Utilities */
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+    }
+
+    .glass-gate {
+      background: rgba(253, 248, 245, 0.86);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border: 1px solid rgba(248, 200, 212, 0.7);
+    }
+
+    /* Swipe Card Stack Styling */
+    .deck-container {
+      position: relative;
+      width: 100%;
+      max-width: 390px;
+      height: 510px;
+      margin: 0 auto;
+      touch-action: none;
+      user-select: none;
+    }
+
+    @media (max-width: 400px) {
+      .deck-container {
+        height: 460px;
+      }
+    }
+
+    .swipe-card {
+      position: absolute;
+      inset: 0;
+      border-radius: 28px;
+      background: #ffffff;
+      overflow: hidden;
+      box-shadow: 0 20px 45px -12px rgba(159, 43, 75, 0.18), 0 4px 16px -4px rgba(45, 30, 36, 0.08);
+      border: 1px solid rgba(248, 200, 212, 0.55);
+      will-change: transform, opacity;
+      cursor: grab;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .swipe-card:active {
+      cursor: grabbing;
+    }
+
+    .swipe-card.animating {
+      transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease;
+    }
+
+    /* Swipe Stamp Overlays */
+    .stamp-badge {
+      position: absolute;
+      top: 28px;
+      padding: 6px 16px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-width: 3px;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 20;
+      backdrop-filter: blur(4px);
+    }
+
+    .stamp-favorite {
+      left: 22px;
+      color: #16A34A;
+      border-color: #16A34A;
+      background: rgba(255, 255, 255, 0.85);
+      transform: rotate(-14deg);
+    }
+
+    .stamp-archive {
+      right: 22px;
+      color: #D97706;
+      border-color: #D97706;
+      background: rgba(255, 255, 255, 0.85);
+      transform: rotate(14deg);
+    }
+
+    /* Heart Confetti Burst */
+    .confetti-heart {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      font-size: 22px;
+      animation: burstFly 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes burstFly {
+      0% {
+        transform: translate(0, 0) scale(0.4) rotate(0deg);
+        opacity: 1;
+      }
+      70% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--tx), var(--ty)) scale(1.25) rotate(var(--rot));
+        opacity: 0;
+      }
+    }
+
+    /* Subtle pulse on Yes button */
+    @keyframes gentlePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+    .pulse-yes {
+      animation: gentlePulse 2.4s infinite ease-in-out;
+    }
+
+    /* Double-Tap Heart Pop Animation on Cards */
+    @keyframes doubleTapPop {
+      0% { transform: translate(-50%, -50%) scale(0.2); opacity: 0; }
+      35% { transform: translate(-50%, -50%) scale(1.25); opacity: 1; }
+      70% { transform: translate(-50%, -50%) scale(0.95); opacity: 1; }
+      100% { transform: translate(-50%, -50%) scale(1.1); opacity: 0; }
+    }
+    .double-tap-heart {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      z-index: 30;
+      pointer-events: none;
+      animation: doubleTapPop 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* Interactive Lyric Line Glow */
+    .lyric-line-btn {
+      transition: all 0.25s ease;
+    }
+    .lyric-line-btn.active-lyric {
+      background: rgba(255, 255, 255, 0.95);
+      color: #D6456B;
+      transform: translateX(4px);
+      box-shadow: 0 6px 18px -6px rgba(214, 69, 107, 0.25);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(214, 69, 107, 0.25);
+      border-radius: 999px;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-roseDeep selection:text-white">
+
+  <!-- Ambient Floating Particles -->
+  <div class="floating-bg" id="floatingBg" aria-hidden="true"></div>
+
+  <!-- ===================================================================== -->
+  <!-- 1. OPENING GATE OVERLAY: "Bhawna, do you still love me?"               -->
+  <!-- ===================================================================== -->
+  <div id="loveGateOverlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-roseSoft/30 backdrop-blur-md transition-opacity duration-700">
+    <div id="gateCard" class="glass-gate relative w-full max-w-md rounded-3xl p-7 sm:p-10 text-center shadow-glass overflow-hidden">
+      
+      <!-- Decorative Top Accent -->
+      <div class="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-roseDeep to-roseDark text-white shadow-lg shadow-roseDeep/30">
+        <i data-lucide="heart" class="w-8 h-8 fill-current"></i>
+      </div>
+
+      <span class="inline-block rounded-full bg-blush px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-roseDeep mb-3">
+        A Little Note For You
+      </span>
+
+      <h1 class="font-serif text-3xl sm:text-4xl font-bold text-ink leading-tight mb-3">
+        Bhawna Parmar, do you still love me?
+      </h1>
+
+      <p class="text-sm sm:text-base text-inkMuted leading-relaxed mb-7">
+        I know I messed up, and I’m truly sorry from the bottom of my heart. Before you look through our favorite memories, I just need to know one thing...
+      </p>
+
+      <!-- Dynamic Pleading Status Pill -->
+      <div id="noPleadBanner" class="min-h-[28px] mb-5 flex items-center justify-center">
+        <span id="noPleadText" class="text-xs sm:text-sm font-semibold text-roseDeep opacity-0 transition-opacity duration-200">
+          Are you sure? 🥺
+        </span>
+      </div>
+
+      <!-- Button Arena -->
+      <div id="gateButtonArena" class="relative flex items-center justify-center gap-4 min-h-[64px]">
+        <!-- YES BUTTON -->
+        <button
+          id="btnYes"
+          type="button"
+          class="pulse-yes z-10 inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-roseDeep to-roseDark px-8 py-3.5 text-base font-bold text-white shadow-lg shadow-roseDeep/30 hover:shadow-xl hover:brightness-110 active:scale-95 transition-all cursor-pointer"
+        >
+          <span>Yes, I do</span>
+          <i data-lucide="heart" class="w-4 h-4 fill-current"></i>
+        </button>
+
+        <!-- DODGING NO BUTTON -->
+        <button
+          id="btnNo"
+          type="button"
+          class="z-20 inline-flex items-center justify-center rounded-2xl border border-roseSoft bg-white/90 px-6 py-3.5 text-sm font-semibold text-inkMuted shadow-sm hover:bg-blush transition-all duration-150 cursor-pointer select-none"
+        >
+          No
+        </button>
+      </div>
+
+      <p class="mt-7 text-[11px] text-inkMuted/70 italic">
+        (Hint: One of these buttons is a little shy today)
+      </p>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 2. MAIN APPLICATION SHELL (Hidden until "Yes" is clicked)             -->
+  <!-- ===================================================================== -->
+  <div id="mainApp" class="relative z-10 flex flex-col min-h-dvh max-w-5xl mx-auto px-4 pt-5 pb-28 sm:pb-10 opacity-0 pointer-events-none transition-opacity duration-700">
+
+    <!-- Top Header -->
+    <header class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 mb-6">
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-roseDeep/10 text-roseDeep">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+          </span>
+          <span class="text-xs font-semibold uppercase tracking-widest text-roseDeep">For Bhawna Parmar</span>
+        </div>
+        <h1 class="font-serif text-2xl sm:text-3xl font-bold text-ink mt-0.5">
+          Our Moments & My Apology
+        </h1>
+      </div>
+
+      <!-- Desktop / Tablet Top Pill Navigation -->
+      <nav aria-label="Primary Tabs" class="hidden sm:flex flex-wrap items-center gap-1 glass-panel p-1.5 rounded-2xl shadow-sm">
+        <button data-tab="explore" class="tab-btn active-tab flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs lg:text-sm font-semibold transition-all cursor-pointer">
+          <i data-lucide="layers" class="w-4 h-4"></i>
+          <span>Memories</span>
+          <span id="badgeExplore" class="ml-0.5 rounded-full bg-roseDeep/15 text-roseDeep px-2 py-0.5 text-xs font-bold">0</span>
+        </button>
+        <button data-tab="songs" class="tab-btn flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs lg:text-sm font-semibold transition-all cursor-pointer">
+          <i data-lucide="music" class="w-4 h-4"></i>
+          <span>Our Songs</span>
+          <span id="badgeSongs" class="ml-0.5 rounded-full bg-[#1DB954]/15 text-[#15803D] px-2 py-0.5 text-xs font-bold">0</span>
+        </button>
+        <button data-tab="favorites" class="tab-btn flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs lg:text-sm font-semibold transition-all cursor-pointer">
+          <i data-lucide="heart" class="w-4 h-4"></i>
+          <span>Favorites</span>
+          <span id="badgeFavorites" class="ml-0.5 rounded-full bg-roseDeep/15 text-roseDeep px-2 py-0.5 text-xs font-bold">0</span>
+        </button>
+        <button data-tab="archive" class="tab-btn flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs lg:text-sm font-semibold transition-all cursor-pointer">
+          <i data-lucide="archive" class="w-4 h-4"></i>
+          <span>Archive</span>
+          <span id="badgeArchive" class="ml-0.5 rounded-full bg-ink/10 text-inkMuted px-2 py-0.5 text-xs font-bold">0</span>
+        </button>
+        <button data-tab="letter" class="tab-btn flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs lg:text-sm font-semibold transition-all cursor-pointer">
+          <i data-lucide="mail-heart" class="w-4 h-4"></i>
+          <span>Apology & Folder</span>
+        </button>
+        <button id="btnReopenGate" type="button" title="Revisit Do You Love Me?" class="flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-semibold text-roseDeep hover:bg-blush/70 transition-all cursor-pointer">
+          <i data-lucide="heart-handshake" class="w-4 h-4"></i>
+          <span class="hidden xl:inline">Love Me?</span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- =================================================================== -->
+    <!-- TAB 1: EXPLORE / SWIPE MEMORIES (HOMEPAGE)                          -->
+    <!-- =================================================================== -->
+    <main class="flex-1 flex flex-col">
+      <section id="tab-explore" class="tab-section flex-1 flex flex-col items-center justify-center">
+        
+        <!-- Subtle Swipe Instructions -->
+        <div class="w-full max-w-[390px] flex items-center justify-between text-xs font-medium text-inkMuted mb-3 px-2">
+          <span class="inline-flex items-center gap-1 text-amber-700">
+            <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> Swipe Left: Archive
+          </span>
+          <span class="inline-flex items-center gap-1 text-roseDeep font-semibold">
+            Swipe Right: Favorite <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </span>
+        </div>
+
+        <!-- Card Stack Container -->
+        <div id="deckContainer" class="deck-container">
+          <!-- Cards injected dynamically by JS -->
+        </div>
+
+        <!-- Empty Deck State -->
+        <div id="emptyDeckState" class="hidden w-full max-w-[390px] glass-panel rounded-3xl p-8 text-center shadow-card my-4">
+          <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blush text-roseDeep">
+            <i data-lucide="heart-handshake" class="w-8 h-8"></i>
+          </div>
+          <h2 class="font-serif text-2xl font-bold text-ink mb-2">You’ve seen every memory!</h2>
+          <p class="text-sm text-inkMuted leading-relaxed mb-6">
+            Every single one of these moments reminds me how lucky I am to have you in my life, Bhawna.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <button onclick="switchTab('favorites')" class="inline-flex items-center justify-center gap-2 rounded-xl bg-roseDeep px-5 py-3 text-sm font-semibold text-white shadow-md hover:bg-roseDark transition cursor-pointer">
+              <i data-lucide="heart" class="w-4 h-4 fill-current"></i>
+              <span>View Favorites</span>
+            </button>
+            <button onclick="resetAllCards()" class="inline-flex items-center justify-center gap-2 rounded-xl border border-roseSoft bg-white px-5 py-3 text-sm font-semibold text-ink hover:bg-blush/50 transition cursor-pointer">
+              <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+              <span>Replay Deck</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tactile Action Controls Below Deck -->
+        <div id="deckControls" class="mt-6 flex items-center justify-center gap-5">
+          <!-- Archive Button (Swipe Left) -->
+          <button
+            id="btnSwipeLeft"
+            type="button"
+            title="Move to Archive"
+            class="group flex h-14 w-14 items-center justify-center rounded-full bg-white border border-amber-200 text-amber-600 shadow-md hover:bg-amber-50 hover:scale-105 active:scale-95 transition-all cursor-pointer"
+          >
+            <i data-lucide="archive" class="w-6 h-6 group-hover:-rotate-6 transition-transform"></i>
+          </button>
+
+          <!-- Undo Button -->
+          <button
+            id="btnUndo"
+            type="button"
+            title="Undo Last Swipe"
+            class="flex h-11 w-11 items-center justify-center rounded-full bg-white/90 border border-roseSoft/70 text-inkMuted shadow-sm hover:text-ink hover:bg-blush/40 active:scale-95 transition-all cursor-pointer disabled:opacity-40 disabled:pointer-events-none"
+          >
+            <i data-lucide="undo-2" class="w-5 h-5"></i>
+          </button>
+
+          <!-- Favorite Button (Swipe Right) -->
+          <button
+            id="btnSwipeRight"
+            type="button"
+            title="Save to Favorites"
+            class="group flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-roseDeep to-roseDark text-white shadow-lg shadow-roseDeep/30 hover:scale-105 active:scale-95 transition-all cursor-pointer"
+          >
+            <i data-lucide="heart" class="w-7 h-7 fill-current group-hover:scale-110 transition-transform"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- TAB 1: EXPLORE / SWIPE MEMORIES (HOMEPAGE)                          -->
+      <!-- =================================================================== -->
+      <section id="tab-explore" class="tab-section flex-1 flex flex-col items-center justify-center">
+        
+        <!-- Subtle Swipe Instructions -->
+        <div class="w-full max-w-[390px] flex items-center justify-between text-xs font-medium text-inkMuted mb-2 px-2">
+          <span class="inline-flex items-center gap-1 text-amber-700">
+            <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> Swipe Left: Archive
+          </span>
+          <span class="inline-flex items-center gap-1 text-roseDeep font-semibold">
+            Swipe Right: Favorite <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </span>
+        </div>
+
+        <p class="text-[11px] text-inkMuted/80 mb-2.5 text-center">
+          Tip: Drag card left/right or <strong>double-tap</strong> any photo to favorite ❤️
+        </p>
+
+        <!-- Card Stack Container -->
+        <div id="deckContainer" class="deck-container">
+          <!-- Cards injected dynamically by JS -->
+        </div>
+          <button
+            id="btnCopySongsConfig"
+            type="button"
+            class="self-start sm:self-auto inline-flex items-center gap-1.5 rounded-xl border border-roseSoft bg-white/90 px-3.5 py-2 text-xs font-semibold text-ink hover:bg-blush/60 transition cursor-pointer"
+            title="Copy song list JSON to paste into index.html for GitHub Pages"
+          >
+            <i data-lucide="code-2" class="w-4 h-4 text-roseDeep"></i>
+            <span>Copy Config for GitHub</span>
+          </button>
+        </div>
+
+        <!-- Featured Lyric Spotlight Card -->
+        <div id="songSpotlightCard" class="glass-panel rounded-3xl p-6 sm:p-8 shadow-card relative overflow-hidden border border-roseSoft/80">
+          <!-- Populated dynamically by renderSongs() -->
+        </div>
+
+        <!-- Playlist Cards Grid -->
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-serif text-lg font-bold text-ink">Playlist Memories (<span id="songsCountLabel">0</span>)</h3>
+            <span class="text-xs text-inkMuted">Tap any track to spotlight its lines</span>
+          </div>
+          <div id="songsListGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+        <!-- Add a Song & Lyric Moment Form -->
+        <div class="glass-panel rounded-3xl p-6 sm:p-8 shadow-card">
+          <div class="mb-5">
+            <h3 class="font-serif text-xl font-bold text-ink flex items-center gap-2">
+              <i data-lucide="disc-3" class="w-5 h-5 text-roseDeep"></i>
+              <span>Add a Song & Lyric Moment</span>
+            </h3>
+            <p class="text-xs sm:text-sm text-inkMuted mt-0.5">
+              Paste any Spotify track link, set the exact timestamp where it hits hardest, and highlight the lines you want Bhawna to read.
+            </p>
+          </div>
+
+          <form id="addSongForm" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-inkMuted mb-1.5">
+                Song Title *
+              </label>
+              <input
+                id="songTitleInput"
+                type="text"
+                required
+                placeholder="e.g., Shaayar"
+                class="w-full rounded-xl border border-roseSoft bg-white/90 px-3.5 py-2.5 text-sm text-ink focus:border-roseDeep focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-inkMuted mb-1.5">
+                Artist(s) *
+              </label>
+              <input
+                id="songArtistInput"
+                type="text"
+                required
+                placeholder="e.g., Seedhe Maut & Bharat Chauhan"
+                class="w-full rounded-xl border border-roseSoft bg-white/90 px-3.5 py-2.5 text-sm text-ink focus:border-roseDeep focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-inkMuted mb-1.5">
+                Spotify Track URL (Optional)
+              </label>
+              <input
+                id="songSpotifyInput"
+                type="url"
+                placeholder="https://open.spotify.com/track/..."
+                class="w-full rounded-xl border border-roseSoft bg-white/90 px-3.5 py-2.5 text-sm text-ink focus:border-roseDeep focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-inkMuted mb-1.5">
+                Specific Timestamp *
+              </label>
+              <input
+                id="songTimestampInput"
+                type="text"
+                required
+                placeholder="e.g., 01:42 - 02:18"
+                class="w-full rounded-xl border border-roseSoft bg-white/90 px-3.5 py-2.5 text-sm text-ink focus:border-roseDeep focus:outline-none"
+              />
+            </div>
+
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-semibold uppercase tracking-wider text-inkMuted mb-1.5">
+                Most Touchy / Highlighted Lines *
+              </label>
+              <textarea
+                id="songLyricsInput"
+                rows="3"
+                required
+                placeholder="Write the exact lines from the song that give you goosebumps..."
+                class="w-full rounded-xl border border-roseSoft bg-white/90 px-3.5 py-2.5 text-sm font-serif text-ink focus:border-roseDeep focus:outline-none"
+              ></textarea>
+            </div>
+
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-semibold uppercase tracking-wider text-inkMuted mb-1.5">
+                Meaning / Why These Lines Remind You of Bhawna *
+              </label>
+              <textarea
+                id="songMeaningInput"
+                rows="3"
+                required
+                placeholder="Explain what these lines mean to you and why you dedicate them to her..."
+                class="w-full rounded-xl border border-roseSoft bg-white/90 px-3.5 py-2.5 text-sm text-ink focus:border-roseDeep focus:outline-none"
+              ></textarea>
+            </div>
+
+            <div class="sm:col-span-2 flex justify-end">
+              <button
+                type="submit"
+                class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-roseDeep to-roseDark px-6 py-3 text-sm font-bold text-white shadow-md hover:brightness-110 active:scale-95 transition cursor-pointer"
+              >
+                <i data-lucide="music" class="w-4 h-4"></i>
+                <span>Add Song & Highlight Lines</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- TAB 3: FAVORITES COLLECTION                                         -->
+      <!-- =================================================================== -->
+      <section id="tab-favorites" class="tab-section hidden">
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h2 class="font-serif text-2xl font-bold text-ink">Bhawna’s Favorites ❤️</h2>
+            <p class="text-xs sm:text-sm text-inkMuted">The memories you swiped right to keep close.</p>
+          </div>
+          <span id="favCountLabel" class="rounded-full bg-blush px-3.5 py-1 text-xs font-bold text-roseDeep">0 items</span>
+        </div>
+
+        <div id="favoritesGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+          <!-- Populated dynamically -->
+        </div>
+
+        <div id="favoritesEmpty" class="hidden glass-panel rounded-3xl p-10 text-center my-6">
+          <div class="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-blush text-roseDeep">
+            <i data-lucide="heart" class="w-7 h-7"></i>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-ink mb-1">No favorites yet</h3>
+          <p class="text-sm text-inkMuted mb-5">Swipe right on any photo or video in the Memories tab to save it here.</p>
+          <button onclick="switchTab('explore')" class="rounded-xl bg-roseDeep px-5 py-2.5 text-sm font-semibold text-white hover:bg-roseDark transition cursor-pointer">
+            Go to Memories
+          </button>
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- TAB 3: ARCHIVE COLLECTION                                           -->
+      <!-- =================================================================== -->
+      <section id="tab-archive" class="tab-section hidden">
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h2 class="font-serif text-2xl font-bold text-ink">Archived Moments</h2>
+            <p class="text-xs sm:text-sm text-inkMuted">Memories tucked away safely—you can restore or favorite them anytime.</p>
+          </div>
+          <span id="archCountLabel" class="rounded-full bg-amber-100 px-3.5 py-1 text-xs font-bold text-amber-800">0 items</span>
+        </div>
+
+        <div id="archiveGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+          <!-- Populated dynamically -->
+        </div>
+
+        <div id="archiveEmpty" class="hidden glass-panel rounded-3xl p-10 text-center my-6">
+          <div class="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-amber-100 text-amber-700">
+            <i data-lucide="archive" class="w-7 h-7"></i>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-ink mb-1">Archive is empty</h3>
+          <p class="text-sm text-inkMuted mb-5">Items you swipe left on will be neatly stored here.</p>
+          <button onclick="switchTab('explore')" class="rounded-xl bg-ink px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 transition cursor-pointer">
+            Back to Deck
+          </button>
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- TAB 4: APOLOGY LETTER & MEDIA FOLDER MANAGER                        -->
+      <!-- =================================================================== -->
+      <section id="tab-letter" class="tab-section hidden space-y-6">
+        
+        <!-- Interactive Tap-To-Open Reasons & Forgiveness Meter (Phone Friendly) -->
+        <div class="glass-panel rounded-3xl p-6 sm:p-8 shadow-card border border-roseSoft/80">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <span class="inline-flex items-center gap-1.5 rounded-full bg-roseDeep/10 px-3 py-1 text-xs font-bold text-roseDeep mb-1">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Interactive Promise Cards
+              </span>
+              <h3 class="font-serif text-xl sm:text-2xl font-bold text-ink">Tap Each Card For My Promises To You</h3>
+            </div>
+            <span id="promiseProgressLabel" class="self-start sm:self-auto rounded-full bg-blush px-3.5 py-1 text-xs font-bold text-roseDeep">
+              0 / 4 Unlocked ❤️
+            </span>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="w-full h-2.5 rounded-full bg-blush overflow-hidden mb-5">
+            <div id="promiseProgressBar" class="h-full bg-gradient-to-r from-roseDeep to-roseDark rounded-full transition-all duration-500" style="width: 0%"></div>
+          </div>
+
+          <!-- 4 Interactive Flip/Reveal Cards -->
+          <div id="promiseCardsGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Heartfelt Apology Letter Card -->
+        <div class="glass-panel rounded-3xl p-6 sm:p-9 shadow-card relative overflow-hidden">
+          <div class="absolute -right-8 -top-8 h-36 w-36 rounded-full bg-roseSoft/30 blur-2xl pointer-events-none"></div>
+          
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-blush px-3.5 py-1 text-xs font-semibold text-roseDeep">
+              <i data-lucide="feather" class="w-3.5 h-3.5"></i> From My Heart To Yours
+            </span>
+            <button id="btnToggleEditLetter" type="button" class="text-xs font-semibold text-roseDeep hover:underline flex items-center gap-1 cursor-pointer">
+              <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
+              <span id="editLetterLabel">Customize Note</span>
+            </button>
+          </div>
+
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-ink mb-4">
+            Dear Bhawna,
+          </h2>
+
+          <!-- Read-only Display View -->
+          <div id="letterDisplay" class="space-y-4 text-sm sm:text-base text-ink/90 leading-relaxed whitespace-pre-line"></div>
+
+          <!-- Editable Textarea View -->
+          <div id="letterEditor" class="hidden space-y-3">
+            <textarea
+              id="letterTextarea"
+              rows="7"
+              class="w-full rounded-2xl border border-roseSoft bg-white/90 p-4 text-sm sm:text-base text-ink focus:border-roseDeep focus:outline-none"
+            ></textarea>
+            <div class="flex justify-end gap-2">
+              <button id="btnSaveLetter" type="button" class="rounded-xl bg-roseDeep px-5 py-2 text-sm font-semibold text-white hover:bg-roseDark transition cursor-pointer">
+                Save Letter
+              </button>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-5 border-t border-roseSoft/50 flex items-center justify-between">
+            <div>
+              <p class="font-serif italic text-lg text-roseDark">Forever yours,</p>
+              <p class="text-xs text-inkMuted">Always hoping to make you smile again ❤️</p>
+            </div>
+            <button onclick="triggerHeartBurst(window.innerWidth/2, window.innerHeight/2)" class="inline-flex items-center gap-2 rounded-2xl bg-blush px-4 py-2.5 text-xs sm:text-sm font-bold text-roseDeep hover:bg-roseSoft/50 transition cursor-pointer">
+              <i data-lucide="heart" class="w-4 h-4 fill-current"></i> Send Hug
+            </button>
+          </div>
+        </div>
+
+        <!-- Add Photos / Videos to the Memory Folder -->
+        <div class="glass-panel rounded-3xl p-6 sm:p-8 shadow-card">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5">
+            <div>
+              <h3 class="font-serif text-xl font-bold text-ink">Add Photos & Videos to Folder</h3>
+              <p class="text-xs sm:text-sm text-inkMuted">
+                Upload photos/videos directly from your device or paste a media link to add new swipe cards.
+              </p>
+            </div>
+            <button onclick="resetAllCards()" class="self-start sm:self-auto inline-flex items-center gap-1.5 rounded-xl border border-roseSoft bg-white px-3.5 py-2 text-xs font-semibold text-ink hover:bg-blush/50 transition cursor-pointer">
+              <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i> Reset All Swipes
+            </button>
+          </div>
+
+          <form id="addMediaForm" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Local File Picker -->
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-semibold uppercase tracking-wider text-inkMuted mb-1.5">
+                Option A: Choose Local Photo or Video File
+              </label>
+              <label class="flex flex-col items-center justify-center w-full h-28 border-2 border-dashed border-roseSoft rounded-2xl bg-white/60 hover:bg-blush/30 transition cursor-pointer px-4 text-center">
+                <i data-lucide="upload-cloud" class="w-6 h-6 text-roseDeep mb-1"></i>
+                <span id="filePickerLabel" class="text-xs sm:text-sm font-medium text-ink">
+                  Tap to select image (.jpg, .png, .webp) or video (.mp4, .mov)
+                </span>
+                <input id="mediaFileInput" type="file" accept="image/*,video/*" class="hidden" />
+              </label>
+            </div>
+
+            <!-- Or URL -->
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-inkMuted mb-1.5">
+                Option B: Image / Video URL
+              </label>
+              <input
+                id="mediaUrlInput"
+                type="url"
+                placeholder="https://... or ./media/photo1.jpg"
+                class="w-full rounded-xl border border-roseSoft bg-white/90 px-3.5 py-2.5 text-sm text-ink focus:border-roseDeep focus:outline-none"
+              />
+            </div>
+
+            <!-- Date / Tag -->
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-inkMuted mb-1.5">
+                Date or Location Tag
+              </label>
+              <input
+                id="mediaDateInput"
+                type="text"
+                placeholder="e.g., Our Coffee Date • Oct 14"
+                class="w-full rounded-xl border border-roseSoft bg-white/90 px-3.5 py-2.5 text-sm text-ink focus:border-roseDeep focus:outline-none"
+              />
+            </div>
+
+            <!-- Caption -->
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-semibold uppercase tracking-wider text-inkMuted mb-1.5">
+                Sweet Caption for Bhawna
+              </label>
+              <input
+                id="mediaCaptionInput"
+                type="text"
+                required
+                placeholder="Write why you love this memory..."
+                class="w-full rounded-xl border border-roseSoft bg-white/90 px-3.5 py-2.5 text-sm text-ink focus:border-roseDeep focus:outline-none"
+              />
+            </div>
+
+            <div class="sm:col-span-2 flex justify-end">
+              <button
+                type="submit"
+                class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-roseDeep to-roseDark px-6 py-3 text-sm font-bold text-white shadow-md hover:brightness-110 active:scale-95 transition cursor-pointer"
+              >
+                <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                <span>Add to Swipe Deck</span>
+              </button>
+            </div>
+          </form>
+
+          <!-- GitHub Hosting Tip Box -->
+          <div class="mt-6 rounded-2xl bg-blush/50 border border-roseSoft/70 p-4 text-xs text-inkMuted leading-relaxed">
+            <strong class="text-ink block mb-1">💡 Hosting on GitHub Pages with your own folder:</strong>
+            Create a folder named <code class="bg-white px-1.5 py-0.5 rounded text-roseDark font-mono">media</code> next to this <code class="bg-white px-1.5 py-0.5 rounded text-roseDark font-mono">index.html</code> file in your GitHub repository, drop your photos/videos inside it, and update the <code class="bg-white px-1.5 py-0.5 rounded text-roseDark font-mono">DEFAULT_MEMORIES</code> list inside the script with paths like <code class="bg-white px-1.5 py-0.5 rounded text-roseDark font-mono">./media/photo1.jpg</code> or <code class="bg-white px-1.5 py-0.5 rounded text-roseDark font-mono">./media/video1.mp4</code>.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- =================================================================== -->
+    <!-- MOBILE BOTTOM TAB BAR                                               -->
+    <!-- =================================================================== -->
+    <nav aria-label="Mobile Navigation" class="sm:hidden fixed bottom-3 left-2.5 right-2.5 z-40 glass-panel rounded-2xl shadow-glass px-1.5 py-1.5 flex items-center justify-around border border-roseSoft/70">
+      <button data-tab="explore" class="tab-btn active-tab flex flex-col items-center justify-center py-1.5 px-2 rounded-xl text-[10px] font-semibold transition-all">
+        <i data-lucide="layers" class="w-4 h-4 mb-0.5"></i>
+        <span>Memories</span>
+      </button>
+      <button data-tab="songs" class="tab-btn relative flex flex-col items-center justify-center py-1.5 px-2 rounded-xl text-[10px] font-semibold transition-all">
+        <i data-lucide="music" class="w-4 h-4 mb-0.5"></i>
+        <span>Songs</span>
+        <span id="mobileBadgeSongs" class="absolute top-1 right-1 h-4 min-w-[15px] px-1 rounded-full bg-[#1DB954] text-white text-[9px] font-bold flex items-center justify-center">0</span>
+      </button>
+      <button data-tab="favorites" class="tab-btn relative flex flex-col items-center justify-center py-1.5 px-2 rounded-xl text-[10px] font-semibold transition-all">
+        <i data-lucide="heart" class="w-4 h-4 mb-0.5"></i>
+        <span>Favorites</span>
+        <span id="mobileBadgeFav" class="absolute top-1 right-1 h-4 min-w-[15px] px-1 rounded-full bg-roseDeep text-white text-[9px] font-bold flex items-center justify-center">0</span>
+      </button>
+      <button data-tab="archive" class="tab-btn relative flex flex-col items-center justify-center py-1.5 px-2 rounded-xl text-[10px] font-semibold transition-all">
+        <i data-lucide="archive" class="w-4 h-4 mb-0.5"></i>
+        <span>Archive</span>
+        <span id="mobileBadgeArch" class="absolute top-1 right-1 h-4 min-w-[15px] px-1 rounded-full bg-inkMuted text-white text-[9px] font-bold flex items-center justify-center">0</span>
+      </button>
+      <button data-tab="letter" class="tab-btn flex flex-col items-center justify-center py-1.5 px-2 rounded-xl text-[10px] font-semibold transition-all">
+        <i data-lucide="mail-heart" class="w-4 h-4 mb-0.5"></i>
+        <span>Apology</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 3. FULL-SCREEN LIGHTBOX MODAL (View Photos & Videos in Detail)        -->
+  <!-- ===================================================================== -->
+  <div id="lightboxModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-ink/85 backdrop-blur-md p-4">
+    <div class="relative w-full max-w-2xl rounded-3xl bg-white overflow-hidden shadow-2xl">
+      <button id="closeLightbox" type="button" class="absolute top-4 right-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/75 transition cursor-pointer">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div id="lightboxMediaWrapper" class="w-full max-h-[70vh] bg-black flex items-center justify-center overflow-hidden">
+        <!-- Image or Video injected here -->
+      </div>
+      <div class="p-5 sm:p-6 bg-white flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <span id="lightboxDate" class="text-xs font-semibold uppercase tracking-wider text-roseDeep"></span>
+          <p id="lightboxCaption" class="font-serif text-lg sm:text-xl font-bold text-ink mt-0.5"></p>
+        </div>
+        <div id="lightboxActions" class="flex items-center gap-2"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Pill -->
+  <div id="toastBanner" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 transition-all duration-300">
+    <div id="toastText" class="rounded-full bg-ink/90 text-white px-5 py-2.5 text-xs sm:text-sm font-semibold shadow-lg backdrop-blur-md">
+      Saved!
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- APPLICATION LOGIC                                                     -->
+  <!-- ===================================================================== -->
+  <script>
+    /**
+     * =========================================================================
+     * CUSTOMIZE YOUR MEMORIES FOLDER HERE BEFORE UPLOADING TO GITHUB PAGES
+     * =========================================================================
+     * Tip: Put your photos and videos inside a `/media` folder in your GitHub
+     * repository and set `src` to './media/your-photo.jpg' or './media/clip.mp4'.
+     * Supported types: 'image' or 'video'
+     */
+    const DEFAULT_MEMORIES = [
+      {
+        id: 'mem-1',
+        type: 'image',
+        src: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=900&q=80',
+        date: 'Chapter 01 • The Beginning',
+        caption: 'The day everything started feeling brighter just because you were around, Bhawna.'
+      },
+      {
+        id: 'mem-2',
+        type: 'image',
+        src: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=80',
+        date: 'Chapter 02 • Golden Hour',
+        caption: 'Every ordinary evening turns into my favorite memory whenever I am with you.'
+      },
+      {
+        id: 'mem-3',
+        type: 'video',
+        // Sample gentle romantic video; replace with './media/our-video.mp4' on GitHub!
+        src: 'https://assets.mixkit.co/videos/preview/mixkit-couple-walking-together-on-the-beach-at-sunset-4636-large.mp4',
+        poster: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80',
+        date: 'Chapter 03 • Little Moments',
+        caption: 'I never want to stop making memories like this with you. I am so sorry for hurting you.'
+      },
+      {
+        id: 'mem-4',
+        type: 'image',
+        src: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=80',
+        date: 'Chapter 04 • Your Smile',
+        caption: 'Your smile is honestly my favorite view in the entire world.'
+      },
+      {
+        id: 'mem-5',
+        type: 'image',
+        src: 'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=900&q=80',
+        date: 'Chapter 05 • Always Us',
+        caption: 'No matter what happens, I promise to listen better, love harder, and choose you every day.'
+      }
+    ];
+
+    const DEFAULT_LETTER = `I know words alone can’t magically undo the moments I let you down, and you deserve someone who makes you feel cherished, heard, and safe every single day.
+
+Making this little space for you is my way of reminding you how much every laugh, every late-night talk, and every second with you means to me. You aren’t just someone special to me, Bhawna—you’re my favorite person.
+
+Take all the time you need. Swipe through our memories, keep your favorites close, and know that I’m right here, ready to be better for you.`;
+
+    /**
+     * =========================================================================
+     * CUSTOMIZE YOUR SONGS & TOUCHY LYRICS HERE FOR GITHUB PAGES
+     * =========================================================================
+     */
+    const DEFAULT_SONGS = [
+      {
+        id: 'song-shaayar',
+        title: 'Shaayar (Calm\'s Verse)',
+        artist: 'Seedhe Maut & Bharat Chauhan',
+        spotifyUrl: 'https://open.spotify.com/search/Shaayar%20Seedhe%20Maut%20Bharat%20Chauhan',
+        timestamp: '01:55 — 02:25',
+        touchyLines: '“Kalam main chhodoon jab, tujhe main dikhoonga jaisa hoon asal mein main,\nPar bagal mein rehna tu, rehna tu asal, na kisi ki nakal tu reh...”',
+        meaning: 'Calm’s verse hits straight to the heart—asking you to stay right beside me as your real, unfiltered self, just as I want to stand in front of you without any masks or excuses. You are completely one of a kind, Bhawna, and I just want the real us back.'
+      },
+      {
+        id: 'song-hausla',
+        title: 'Hausla',
+        artist: 'Seedhe Maut',
+        spotifyUrl: 'https://open.spotify.com/search/Hausla%20Seedhe%20Maut',
+        timestamp: '01:10 — 01:45',
+        touchyLines: '“I don\'t miss that life...”',
+        meaning: 'Before you walked into my life, everything felt incomplete and noisy. Looking back at how things used to be before us, I truly don’t miss that life at all—you gave me peace, purpose, and a reason to keep going.'
+      },
+      {
+        id: 'song-baazaar',
+        title: 'Baazaar',
+        artist: 'Seedhe Maut',
+        spotifyUrl: 'https://open.spotify.com/search/Baazaar%20Seedhe%20Maut',
+        timestamp: '01:30 — 02:05',
+        touchyLines: '“Is bheed aur shor ke baazaar mein,\nBas tera saath hi sukoon deta hai...”',
+        meaning: 'In a world where everyone is rushing and nothing feels permanent, having you by my side is the only thing that ever felt genuine. No matter how chaotic things get, my heart always comes back to you, Bhawna.'
+      },
+      {
+        id: 'song-2',
+        title: 'Tu Hai Kahan',
+        artist: 'AUR',
+        spotifyUrl: 'https://open.spotify.com/search/Tu%20Hai%20Kahan%20AUR',
+        timestamp: '01:15 — 01:48',
+        touchyLines: '“Tu hai kahan, khwabon ke is shehar mein,\nMera dil tujhe dhoondhta har pehar mein...”',
+        meaning: 'Whenever we aren’t talking properly, everything around me feels half-empty. This timestamp is literally the exact feeling of missing your voice.'
+      },
+      {
+        id: 'song-3',
+        title: 'Alag Aasmaan',
+        artist: 'Anuv Jain',
+        spotifyUrl: 'https://open.spotify.com/search/Alag%20Aasmaan%20Anuv%20Jain',
+        timestamp: '02:04 — 02:36',
+        touchyLines: '“Ab kya karein, kya keh sakein,\nDooriyan bhi zaroori hain shayad...”',
+        meaning: 'Even if distance or misunderstandings happen, my sky still connects right back to yours. I just want us to find our way back with a smile.'
+      }
+    ];
+
+    // Storage Keys
+    const STORAGE_KEY_STATE = 'bhawna_apology_state_v1';
+    const STORAGE_KEY_LETTER = 'bhawna_apology_letter_v1';
+    const STORAGE_KEY_SONGS = 'bhawna_apology_songs_v1';
+
+    // Interactive Promise Cards for Bhawna
+    const PROMISE_CARDS = [
+      {
+        id: 'prom-1',
+        tag: 'Promise #1',
+        front: 'Tap to open: When things get tough...',
+        back: 'I promise to listen to understand you first, never to argue or let ego come between us. ❤️'
+      },
+      {
+        id: 'prom-2',
+        tag: 'Promise #2',
+        front: 'Tap to open: On your busy or hard days...',
+        back: 'I will always be your safe space, your biggest cheerleader, and the person bringing you peace. 🌸'
+      },
+      {
+        id: 'prom-3',
+        tag: 'Promise #3',
+        front: 'Tap to open: About my mistakes...',
+        back: 'I own where I went wrong, Bhawna. I am learning, growing, and proving it through actions—not just words. ✨'
+      },
+      {
+        id: 'prom-4',
+        tag: 'Promise #4',
+        front: 'Tap to open: My favorite choice every day...',
+        back: 'In every room, every mood, and every lifetime, I will still choose you without a second thought. 💕'
+      }
+    ];
+    let unlockedPromises = new Set();
+
+    // Gentle mobile haptic feedback helper (works on Android Chrome & supported mobile browsers)
+    function triggerHaptic(pattern = 25) {
+      try {
+        if (navigator.vibrate) {
+          navigator.vibrate(pattern);
+        }
+      } catch (e) {
+        // Ignore on unsupported devices (e.g. iOS Safari)
+      }
+    }
+
+    // App State
+    let appState = {
+      memories: [],      // All memory objects
+      deckIds: [],       // Remaining card IDs in swipe deck
+      favoriteIds: [],   // Swiped right IDs
+      archiveIds: [],    // Swiped left IDs
+      history: []        // Stack of { id, action: 'favorite' | 'archive' } for Undo
+    };
+
+    let songMemories = [];
+    let selectedSongId = null;
+
+    // Pleading phrases when trying to click/hover "No"
+    const NO_PLEAD_MESSAGES = [
+      "Are you sure, Bhawna? 🥺",
+      "Think again ❤️",
+      "Nice try! That button is broken 😉",
+      "Please? Look at our memories first...",
+      "Error 404: 'No' not found 💫",
+      "My heart says try the pink button 💕",
+      "You can't catch me! 🏃‍♂️💨"
+    ];
+    let noDodgeCount = 0;
+
+    // Initialize Lucide icons
+    function refreshIcons() {
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    }
+
+    // Load or Initialize State
+    function loadState() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY_STATE);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed && Array.isArray(parsed.memories) && parsed.memories.length > 0) {
+            appState = parsed;
+            return;
+          }
+        }
+      } catch (e) {
+        console.warn('Could not read saved state:', e);
+      }
+
+      appState = {
+        memories: [...DEFAULT_MEMORIES],
+        deckIds: DEFAULT_MEMORIES.map(m => m.id),
+        favoriteIds: [],
+        archiveIds: [],
+        history: []
+      };
+      saveState();
+    }
+
+    function saveState() {
+      try {
+        // Filter out temporary blob URLs if needed, or keep session data safe
+        localStorage.setItem(STORAGE_KEY_STATE, JSON.stringify(appState));
+      } catch (e) {
+        console.warn('Storage quota warning:', e);
+      }
+    }
+
+    function loadSongs() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY_SONGS);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            songMemories = parsed;
+            selectedSongId = songMemories[0].id;
+            return;
+          }
+        }
+      } catch (e) {
+        console.warn('Could not read saved songs:', e);
+      }
+      songMemories = [...DEFAULT_SONGS];
+      selectedSongId = songMemories[0]?.id || null;
+      saveSongs();
+    }
+
+    function saveSongs() {
+      try {
+        localStorage.setItem(STORAGE_KEY_SONGS, JSON.stringify(songMemories));
+      } catch (e) {
+        console.warn('Could not save songs:', e);
+      }
+    }
+
+    // Extract Spotify Track ID if user pastes a track URL (e.g., https://open.spotify.com/track/4uLU6hMCjMI75M1A2tKUQC)
+    function extractSpotifyTrackId(url) {
+      if (!url) return null;
+      const match = url.match(/spotify\.com\/(?:intl-[a-z]+\/)?track\/([a-zA-Z0-9]+)/i);
+      return match ? match[1] : null;
+    }
+
+    function getSpotifyLogoSvg(sizeClass = 'w-5 h-5') {
+      return `
+        <svg class="${sizeClass} fill-current" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+        </svg>
+      `;
+    }
+
+    // =========================================================================
+    // 1. AMBIENT BACKGROUND PARTICLES & HEART CONFETTI
+    // =========================================================================
+    function initAmbientBackground() {
+      const container = document.getElementById('floatingBg');
+      const symbols = ['❤️', '🌸', '✨', '💕', '🌷'];
+      for (let i = 0; i < 16; i++) {
+        const el = document.createElement('span');
+        el.className = 'ambient-particle';
+        el.textContent = symbols[i % symbols.length];
+        el.style.left = `${Math.random() * 100}%`;
+        el.style.fontSize = `${14 + Math.random() * 14}px`;
+        el.style.animationDuration = `${12 + Math.random() * 14}s`;
+        el.style.animationDelay = `${-Math.random() * 15}s`;
+        container.appendChild(el);
+      }
+    }
+
+    function triggerHeartBurst(originX, originY, customSymbols = null) {
+      const hearts = customSymbols || ['❤️', '💖', '💕', '💗', '🌸', '✨'];
+      for (let i = 0; i < 24; i++) {
+        const particle = document.createElement('span');
+        particle.className = 'confetti-heart';
+        particle.textContent = hearts[i % hearts.length];
+        particle.style.left = `${originX}px`;
+        particle.style.top = `${originY}px`;
+
+        const angle = (Math.PI * 2 * i) / 24 + (Math.random() * 0.4);
+        const velocity = 80 + Math.random() * 170;
+        const tx = Math.cos(angle) * velocity;
+        const ty = Math.sin(angle) * velocity - 55;
+        const rot = (Math.random() - 0.5) * 360;
+
+        particle.style.setProperty('--tx', `${tx}px`);
+        particle.style.setProperty('--ty', `${ty}px`);
+        particle.style.setProperty('--rot', `${rot}deg`);
+
+        document.body.appendChild(particle);
+        setTimeout(() => particle.remove(), 1650);
+      }
+    }
+
+    function showToast(msg) {
+      const banner = document.getElementById('toastBanner');
+      const text = document.getElementById('toastText');
+      text.textContent = msg;
+      banner.classList.remove('opacity-0', '-translate-y-2');
+      banner.classList.add('opacity-100', 'translate-y-0');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => {
+        banner.classList.add('opacity-0', '-translate-y-2');
+        banner.classList.remove('opacity-100', 'translate-y-0');
+      }, 2100);
+    }
+
+    // =========================================================================
+    // 2. OPENING LOVE GATE LOGIC ("No" button dodges, only "Yes" unlocks)
+    // =========================================================================
+    function initLoveGate() {
+      const btnYes = document.getElementById('btnYes');
+      const btnNo = document.getElementById('btnNo');
+      const gateCard = document.getElementById('gateCard');
+      const pleadText = document.getElementById('noPleadText');
+      const overlay = document.getElementById('loveGateOverlay');
+      const mainApp = document.getElementById('mainApp');
+
+      function dodgeNoButton(e) {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        triggerHaptic([20, 30, 20]);
+
+        // Update pleading message
+        pleadText.textContent = NO_PLEAD_MESSAGES[noDodgeCount % NO_PLEAD_MESSAGES.length];
+        pleadText.classList.remove('opacity-0');
+        noDodgeCount++;
+
+        // Calculate safe random bounds inside the gateCard
+        const cardRect = gateCard.getBoundingClientRect();
+        const btnRect = btnNo.getBoundingClientRect();
+
+        // Make button position absolute within gateCard once dodging starts
+        if (btnNo.style.position !== 'absolute') {
+          btnNo.style.position = 'absolute';
+        }
+
+        const padding = 20;
+        const maxX = Math.max(padding, cardRect.width - btnRect.width - padding);
+        const maxY = Math.max(padding, cardRect.height - btnRect.height - padding);
+
+        // Pick a spot away from the center where Yes button sits
+        let randomX = padding + Math.random() * (maxX - padding);
+        let randomY = padding + Math.random() * (maxY - padding);
+
+        // Ensure it doesn't overlap the Yes button directly
+        const yesRect = btnYes.getBoundingClientRect();
+        const yesRelX = yesRect.left - cardRect.left;
+        const yesRelY = yesRect.top - cardRect.top;
+
+        if (Math.abs(randomX - yesRelX) < 90 && Math.abs(randomY - yesRelY) < 60) {
+          randomY = randomY > cardRect.height / 2 ? padding + 10 : maxY - 10;
+        }
+
+        btnNo.style.left = `${randomX}px`;
+        btnNo.style.top = `${randomY}px`;
+        btnNo.style.transform = `rotate(${(Math.random() - 0.5) * 18}deg)`;
+      }
+
+      // Trigger dodge on desktop hover, mouseenter, focus, and mobile touchstart/click
+      btnNo.addEventListener('mouseenter', dodgeNoButton);
+      btnNo.addEventListener('touchstart', dodgeNoButton, { passive: false });
+      btnNo.addEventListener('click', dodgeNoButton);
+
+      // Unlock app when "Yes" is clicked
+      btnYes.addEventListener('click', (e) => {
+        triggerHaptic([40, 40, 80]);
+        const rect = btnYes.getBoundingClientRect();
+        triggerHeartBurst(rect.left + rect.width / 2, rect.top + rect.height / 2);
+
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+        mainApp.classList.remove('opacity-0', 'pointer-events-none');
+
+        setTimeout(() => {
+          overlay.style.display = 'none';
+          renderAll();
+        }, 650);
+      });
+
+      // Allow reopening the "Do You Love Me?" gate anytime from the header
+      const btnReopenGate = document.getElementById('btnReopenGate');
+      if (btnReopenGate) {
+        btnReopenGate.addEventListener('click', () => {
+          overlay.style.display = 'flex';
+          requestAnimationFrame(() => {
+            overlay.classList.remove('opacity-0', 'pointer-events-none');
+          });
+        });
+      }
+    }
+
+    // =========================================================================
+    // 3. TAB NAVIGATION
+    // =========================================================================
+    function switchTab(tabName) {
+      // Update sections
+      document.querySelectorAll('.tab-section').forEach(sec => {
+        sec.classList.add('hidden');
+      });
+      const activeSec = document.getElementById(`tab-${tabName}`);
+      if (activeSec) activeSec.classList.remove('hidden');
+
+      // Update button styles
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        const isTarget = btn.getAttribute('data-tab') === tabName;
+        if (isTarget) {
+          btn.classList.add('bg-roseDeep', 'text-white', 'shadow-sm');
+          btn.classList.remove('text-inkMuted', 'hover:text-ink');
+        } else {
+          btn.classList.remove('bg-roseDeep', 'text-white', 'shadow-sm');
+          btn.classList.add('text-inkMuted', 'hover:text-ink');
+        }
+      });
+
+      // Pause any playing videos when switching away from explore
+      if (tabName !== 'explore') {
+        document.querySelectorAll('#deckContainer video').forEach(v => v.pause());
+      }
+
+      renderAll();
+    }
+
+    function initTabs() {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          switchTab(btn.getAttribute('data-tab'));
+        });
+      });
+      switchTab('explore');
+    }
+
+    // =========================================================================
+    // 6. OUR SONGS & TOUCHY LYRICS SPOTLIGHT ENGINE
+    // =========================================================================
+    function selectSong(songId) {
+      selectedSongId = songId;
+      renderSongs();
+    }
+
+    function deleteSong(songId, e) {
+      if (e) e.stopPropagation();
+      songMemories = songMemories.filter(s => s.id !== songId);
+      if (selectedSongId === songId) {
+        selectedSongId = songMemories[0]?.id || null;
+      }
+      saveSongs();
+      renderAll();
+      showToast('Song removed from list');
+    }
+
+    function renderSongs() {
+      const spotlightEl = document.getElementById('songSpotlightCard');
+      const gridEl = document.getElementById('songsListGrid');
+      const countEl = document.getElementById('songsCountLabel');
+
+      if (!spotlightEl || !gridEl) return;
+
+      countEl.textContent = songMemories.length;
+
+      if (songMemories.length === 0) {
+        spotlightEl.innerHTML = `
+          <div class="text-center py-6">
+            <p class="font-serif text-xl font-bold text-ink mb-1">No songs added yet</p>
+            <p class="text-sm text-inkMuted">Use the form below to add a song, timestamp, and touchy lines for Bhawna.</p>
+          </div>
+        `;
+        gridEl.innerHTML = '';
+        return;
+      }
+
+      const activeSong = songMemories.find(s => s.id === selectedSongId) || songMemories[0];
+      selectedSongId = activeSong.id;
+
+      const trackId = extractSpotifyTrackId(activeSong.spotifyUrl);
+      const safeSpotifyLink = activeSong.spotifyUrl || `https://open.spotify.com/search/${encodeURIComponent(activeSong.title + ' ' + activeSong.artist)}`;
+
+      const spotifyPlayerHTML = trackId
+        ? `<div class="mt-5 rounded-2xl overflow-hidden shadow-sm border border-[#1DB954]/25 bg-black/5">
+             <iframe
+               style="border-radius:12px"
+               src="https://open.spotify.com/embed/track/${trackId}?utm_source=generator&theme=0"
+               width="100%"
+               height="152"
+               frameBorder="0"
+               allowfullscreen=""
+               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+               loading="lazy">
+             </iframe>
+           </div>`
+        : `<div class="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-[#121212] text-white p-4 shadow-md">
+             <div class="flex items-center gap-3">
+               <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#1DB954] text-black shadow">
+                 ${getSpotifyLogoSvg('w-6 h-6')}
+               </div>
+               <div>
+                 <p class="text-xs uppercase tracking-wider text-[#1DB954] font-bold">Listen on Spotify</p>
+                 <p class="text-sm font-semibold text-white line-clamp-1">${escapeHtml(activeSong.title)} — ${escapeHtml(activeSong.artist)}</p>
+               </div>
+             </div>
+             <a
+               href="${escapeHtml(safeSpotifyLink)}"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="inline-flex items-center gap-1.5 rounded-full bg-[#1DB954] px-4 py-2 text-xs font-bold text-black hover:brightness-110 transition"
+             >
+               <span>Open Track</span>
+               <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+             </a>
+           </div>`;
+
+      spotlightEl.innerHTML = `
+        <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 pb-5 border-b border-roseSoft/60">
+          <div class="flex items-start gap-3.5">
+            <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#1DB954] to-[#15803D] text-white shadow-lg shadow-[#1DB954]/25">
+              ${getSpotifyLogoSvg('w-7 h-7')}
+            </div>
+            <div>
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="inline-flex items-center gap-1 rounded-full bg-roseDeep/10 px-2.5 py-0.5 text-[11px] font-bold text-roseDeep">
+                  <i data-lucide="clock" class="w-3 h-3"></i> Timestamp: ${escapeHtml(activeSong.timestamp)}
+                </span>
+                <span class="text-[11px] font-semibold text-inkMuted">Lyric Spotlight</span>
+              </div>
+              <h3 class="font-serif text-2xl sm:text-3xl font-bold text-ink mt-1">${escapeHtml(activeSong.title)}</h3>
+              <p class="text-xs sm:text-sm font-medium text-inkMuted">${escapeHtml(activeSong.artist)}</p>
+            </div>
+          </div>
+
+          <a
+            href="${escapeHtml(safeSpotifyLink)}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="self-start inline-flex items-center gap-2 rounded-full bg-[#1DB954]/15 hover:bg-[#1DB954]/25 text-[#15803D] px-4 py-2 text-xs font-bold transition"
+          >
+            ${getSpotifyLogoSvg('w-4 h-4')}
+            <span>Play on Spotify</span>
+          </a>
+        </div>
+
+        <!-- Highlighted Touchy Lines -->
+        <div class="mt-6 rounded-2xl bg-gradient-to-br from-blush/80 via-white/90 to-roseSoft/35 border border-roseSoft p-5 sm:p-6 relative">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="inline-block rounded-full bg-white px-3 py-0.5 text-[10px] font-bold uppercase tracking-widest text-roseDeep shadow-xs">
+              Most Touchy Lines • Pause at ${escapeHtml(activeSong.timestamp)}
+            </span>
+            <span class="text-[11px] font-medium text-inkMuted">Tap a line ✨</span>
+          </div>
+          <div class="space-y-2">
+            ${activeSong.touchyLines
+              .split('\n')
+              .filter(line => line.trim().length > 0)
+              .map(line => `
+                <button
+                  type="button"
+                  onclick="highlightLyricLine(this, event)"
+                  class="lyric-line-btn w-full text-left rounded-xl px-3.5 py-2.5 font-serif italic text-base sm:text-xl font-semibold text-roseDark leading-snug hover:bg-white/70 active:scale-[0.99] cursor-pointer"
+                >
+                  ${escapeHtml(line)}
+                </button>
+              `).join('')}
+          </div>
+        </div>
+
+        <!-- Personal Meaning Behind the Lines -->
+        <div class="mt-5">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-inkMuted mb-1.5 flex items-center gap-1.5">
+            <i data-lucide="heart" class="w-3.5 h-3.5 text-roseDeep fill-current"></i>
+            <span>What these lines mean for us, Bhawna</span>
+          </h4>
+          <p class="text-sm sm:text-base text-ink/90 leading-relaxed bg-white/75 rounded-2xl p-4 border border-roseSoft/50">
+            ${escapeHtml(activeSong.meaning)}
+          </p>
+        </div>
+
+        ${spotifyPlayerHTML}
+      `;
+
+      // Render clickable playlist cards
+      gridEl.innerHTML = '';
+      songMemories.forEach(song => {
+        const isSelected = song.id === activeSong.id;
+        const card = document.createElement('div');
+        card.onclick = () => selectSong(song.id);
+        card.className = `rounded-2xl p-4 transition-all cursor-pointer flex flex-col justify-between border ${
+          isSelected
+            ? 'bg-white border-roseDeep shadow-card ring-2 ring-roseDeep/20'
+            : 'glass-panel border-roseSoft/60 hover:bg-white/90 hover:shadow-sm'
+        }`;
+
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-2.5">
+              <span class="inline-flex items-center gap-1.5 rounded-full bg-[#1DB954]/15 text-[#15803D] px-2.5 py-1 text-[11px] font-bold">
+                ${getSpotifyLogoSvg('w-3.5 h-3.5')}
+                <span>${escapeHtml(song.timestamp)}</span>
+              </span>
+              <button
+                type="button"
+                onclick="deleteSong('${song.id}', event)"
+                title="Remove song"
+                class="text-inkMuted/60 hover:text-roseDeep p-1 rounded-lg transition cursor-pointer"
+              >
+                <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+            <h4 class="font-serif text-lg font-bold text-ink line-clamp-1">${escapeHtml(song.title)}</h4>
+            <p class="text-xs font-medium text-inkMuted mb-2.5 line-clamp-1">${escapeHtml(song.artist)}</p>
+            <p class="font-serif italic text-xs text-roseDark bg-blush/50 rounded-xl p-2.5 line-clamp-2">
+              ${escapeHtml(song.touchyLines)}
+            </p>
+          </div>
+          <div class="mt-3 pt-2 border-t border-roseSoft/40 flex items-center justify-between text-[11px] font-semibold">
+            <span class="${isSelected ? 'text-roseDeep' : 'text-inkMuted'}">
+              ${isSelected ? 'Currently Highlighted ✨' : 'Tap to read meaning'}
+            </span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-roseDeep"></i>
+          </div>
+        `;
+        gridEl.appendChild(card);
+      });
+    }
+
+    function highlightLyricLine(btnEl, event) {
+      triggerHaptic(20);
+      document.querySelectorAll('.lyric-line-btn').forEach(el => el.classList.remove('active-lyric'));
+      btnEl.classList.add('active-lyric');
+
+      const rect = btnEl.getBoundingClientRect();
+      const x = event?.clientX || (rect.left + rect.width / 2);
+      const y = event?.clientY || (rect.top + rect.height / 2);
+      triggerHeartBurst(x, y, ['🎵', '🎶', '❤️', '✨']);
+    }
+
+    function renderPromiseCards() {
+      const grid = document.getElementById('promiseCardsGrid');
+      const label = document.getElementById('promiseProgressLabel');
+      const bar = document.getElementById('promiseProgressBar');
+      if (!grid || !label || !bar) return;
+
+      const count = unlockedPromises.size;
+      const total = PROMISE_CARDS.length;
+      label.textContent = `${count} / ${total} Unlocked ❤️`;
+      bar.style.width = `${(count / total) * 100}%`;
+
+      grid.innerHTML = '';
+      PROMISE_CARDS.forEach(item => {
+        const isOpen = unlockedPromises.has(item.id);
+        const card = document.createElement('button');
+        card.type = 'button';
+        card.onclick = (e) => togglePromiseCard(item.id, e);
+        card.className = `text-left rounded-2xl p-4 sm:p-5 transition-all duration-300 border cursor-pointer active:scale-[0.98] ${
+          isOpen
+            ? 'bg-white border-roseDeep shadow-sm'
+            : 'bg-gradient-to-br from-blush/90 to-white border-roseSoft hover:border-roseDeep/60'
+        }`;
+
+        if (isOpen) {
+          card.innerHTML = `
+            <div class="flex items-center justify-between mb-2">
+              <span class="rounded-full bg-roseDeep/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-roseDeep">${escapeHtml(item.tag)} • Opened</span>
+              <i data-lucide="heart" class="w-4 h-4 text-roseDeep fill-current"></i>
+            </div>
+            <p class="text-sm sm:text-base font-medium text-ink leading-relaxed">${escapeHtml(item.back)}</p>
+          `;
+        } else {
+          card.innerHTML = `
+            <div class="flex items-center justify-between mb-2">
+              <span class="rounded-full bg-white px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-inkMuted">${escapeHtml(item.tag)}</span>
+              <i data-lucide="sparkles" class="w-4 h-4 text-roseDeep"></i>
+            </div>
+            <p class="font-serif text-base sm:text-lg font-bold text-roseDark">${escapeHtml(item.front)}</p>
+          `;
+        }
+
+        grid.appendChild(card);
+      });
+    }
+
+    function togglePromiseCard(id, event) {
+      triggerHaptic(30);
+      const wasUnlocked = unlockedPromises.has(id);
+      if (!wasUnlocked) {
+        unlockedPromises.add(id);
+        const x = event?.clientX || window.innerWidth / 2;
+        const y = event?.clientY || window.innerHeight / 2;
+        triggerHeartBurst(x, y);
+        if (unlockedPromises.size === PROMISE_CARDS.length) {
+          showToast('All 4 promises unlocked! I love you, Bhawna ❤️');
+        }
+      }
+      renderPromiseCards();
+      refreshIcons();
+    }
+
+    function initSongForm() {
+      const form = document.getElementById('addSongForm');
+      if (!form) return;
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const title = document.getElementById('songTitleInput').value.trim();
+        const artist = document.getElementById('songArtistInput').value.trim();
+        const spotifyUrl = document.getElementById('songSpotifyInput').value.trim();
+        const timestamp = document.getElementById('songTimestampInput').value.trim();
+        const touchyLines = document.getElementById('songLyricsInput').value.trim();
+        const meaning = document.getElementById('songMeaningInput').value.trim();
+
+        if (!title || !artist || !timestamp || !touchyLines || !meaning) {
+          showToast('Please fill in all required song details');
+          return;
+        }
+
+        const newSong = {
+          id: `song-${Date.now()}`,
+          title,
+          artist,
+          spotifyUrl,
+          timestamp,
+          touchyLines,
+          meaning
+        };
+
+        songMemories.unshift(newSong);
+        selectedSongId = newSong.id;
+        saveSongs();
+        form.reset();
+        renderAll();
+        showToast(`Added "${title}" to Our Songs 🎵`);
+      });
+
+      const btnCopyConfig = document.getElementById('btnCopySongsConfig');
+      if (btnCopyConfig) {
+        btnCopyConfig.addEventListener('click', () => {
+          const codeSnippet = `const DEFAULT_SONGS = ${JSON.stringify(songMemories, null, 2)};`;
+          const tempArea = document.createElement('textarea');
+          tempArea.value = codeSnippet;
+          document.body.appendChild(tempArea);
+          tempArea.select();
+          try {
+            document.execCommand('copy');
+            showToast('Copied DEFAULT_SONGS config for GitHub! 📋');
+          } catch (err) {
+            showToast('Could not copy automatically');
+          }
+          document.body.removeChild(tempArea);
+        });
+      }
+    }
+
+    // =========================================================================
+    // 7. APOLOGY LETTER & ADD MEDIA FOLDER FORM
+    // =========================================================================
+    function renderCollectionGrid(gridId, emptyId, countLabelId, itemIds, sourceType) {
+      const grid = document.getElementById(gridId);
+      const emptyEl = document.getElementById(emptyId);
+      const countEl = document.getElementById(countLabelId);
+
+      if (!grid || !emptyEl || !countEl) return;
+
+      const items = itemIds
+        .map(id => appState.memories.find(m => m.id === id))
+        .filter(Boolean);
+
+      countEl.textContent = `${items.length} ${items.length === 1 ? 'item' : 'items'}`;
+      grid.innerHTML = '';
+
+      if (items.length === 0) {
+        grid.classList.add('hidden');
+        emptyEl.classList.remove('hidden');
+        return;
+      }
+
+      grid.classList.remove('hidden');
+      emptyEl.classList.add('hidden');
+
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'group glass-panel rounded-2xl overflow-hidden shadow-sm hover:shadow-card transition-all flex flex-col';
+
+        const mediaPreview = item.type === 'video'
+          ? `<div class="relative h-56 bg-black cursor-pointer overflow-hidden" onclick="openLightboxModal('${item.id}', '${sourceType}')">
+               <video src="${item.src}" ${item.poster ? `poster="${item.poster}"` : ''} class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-500" muted playsinline></video>
+               <div class="absolute inset-0 flex items-center justify-center bg-black/25">
+                 <span class="flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-roseDeep shadow-md">
+                   <i data-lucide="play" class="w-5 h-5 fill-current ml-0.5"></i>
+                 </span>
+               </div>
+             </div>`
+          : `<div class="relative h-56 bg-blush/30 cursor-pointer overflow-hidden" onclick="openLightboxModal('${item.id}', '${sourceType}')">
+               <img src="${item.src}" alt="${escapeHtml(item.caption)}" onerror="this.src='https://placehold.co/600x800/FCE7EC/D6456B?text=Memory'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+             </div>`;
+
+        const switchTarget = sourceType === 'favorites' ? 'archive' : 'favorites';
+        const switchLabel = sourceType === 'favorites' ? 'Archive' : 'Favorite';
+        const switchIcon = sourceType === 'favorites' ? 'archive' : 'heart';
+
+        card.innerHTML = `
+          ${mediaPreview}
+          <div class="p-4 flex-1 flex flex-col justify-between bg-white/85">
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-widest text-roseDeep">${escapeHtml(item.date || 'Memory')}</span>
+              <p class="font-serif text-sm font-semibold text-ink mt-1 line-clamp-2">${escapeHtml(item.caption)}</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-roseSoft/40 flex items-center justify-between gap-2">
+              <button onclick="openLightboxModal('${item.id}', '${sourceType}')" class="text-xs font-semibold text-inkMuted hover:text-ink transition cursor-pointer">
+                View Full
+              </button>
+              <button onclick="moveItem('${item.id}', '${switchTarget}')" class="inline-flex items-center gap-1 rounded-lg bg-blush/70 hover:bg-blush px-2.5 py-1.5 text-xs font-semibold text-roseDeep transition cursor-pointer">
+                <i data-lucide="${switchIcon}" class="w-3.5 h-3.5"></i>
+                <span>Move to ${switchLabel}</span>
+              </button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function moveItem(memoryId, target) {
+      appState.deckIds = appState.deckIds.filter(id => id !== memoryId);
+      if (target === 'favorites') {
+        appState.archiveIds = appState.archiveIds.filter(id => id !== memoryId);
+        if (!appState.favoriteIds.includes(memoryId)) appState.favoriteIds.unshift(memoryId);
+        showToast('Moved to Favorites ❤️');
+      } else if (target === 'archive') {
+        appState.favoriteIds = appState.favoriteIds.filter(id => id !== memoryId);
+        if (!appState.archiveIds.includes(memoryId)) appState.archiveIds.unshift(memoryId);
+        showToast('Moved to Archive');
+      }
+      saveState();
+      renderAll();
+    }
+
+    function openLightboxModal(memoryId, sourceType) {
+      const item = appState.memories.find(m => m.id === memoryId);
+      if (!item) return;
+
+      const modal = document.getElementById('lightboxModal');
+      const wrapper = document.getElementById('lightboxMediaWrapper');
+      const dateEl = document.getElementById('lightboxDate');
+      const captionEl = document.getElementById('lightboxCaption');
+      const actionsEl = document.getElementById('lightboxActions');
+
+      dateEl.textContent = item.date || 'Our Memory';
+      captionEl.textContent = item.caption;
+
+      if (item.type === 'video') {
+        wrapper.innerHTML = `<video src="${item.src}" controls autoplay playsinline class="max-h-[70vh] w-auto"></video>`;
+      } else {
+        wrapper.innerHTML = `<img src="${item.src}" alt="${escapeHtml(item.caption)}" class="max-h-[70vh] w-auto object-contain" />`;
+      }
+
+      const target = sourceType === 'favorites' ? 'archive' : 'favorites';
+      const label = sourceType === 'favorites' ? 'Move to Archive' : 'Move to Favorites ❤️';
+      actionsEl.innerHTML = `
+        <button onclick="moveItem('${item.id}', '${target}'); closeLightboxModal();" class="rounded-xl bg-roseDeep px-4 py-2 text-xs sm:text-sm font-semibold text-white hover:bg-roseDark transition cursor-pointer">
+          ${label}
+        </button>
+      `;
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      refreshIcons();
+    }
+
+    function closeLightboxModal() {
+      const modal = document.getElementById('lightboxModal');
+      const wrapper = document.getElementById('lightboxMediaWrapper');
+      wrapper.innerHTML = '';
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function initLetterAndMediaForm() {
+      const displayEl = document.getElementById('letterDisplay');
+      const editorEl = document.getElementById('letterEditor');
+      const textareaEl = document.getElementById('letterTextarea');
+      const toggleBtn = document.getElementById('btnToggleEditLetter');
+      const toggleLabel = document.getElementById('editLetterLabel');
+      const saveBtn = document.getElementById('btnSaveLetter');
+
+      const savedLetter = localStorage.getItem(STORAGE_KEY_LETTER) || DEFAULT_LETTER;
+      displayEl.textContent = savedLetter;
+      textareaEl.value = savedLetter;
+
+      let isEditing = false;
+      toggleBtn.addEventListener('click', () => {
+        isEditing = !isEditing;
+        if (isEditing) {
+          displayEl.classList.add('hidden');
+          editorEl.classList.remove('hidden');
+          toggleLabel.textContent = 'Cancel';
+        } else {
+          displayEl.classList.remove('hidden');
+          editorEl.classList.add('hidden');
+          toggleLabel.textContent = 'Customize Note';
+        }
+      });
+
+      saveBtn.addEventListener('click', () => {
+        const updated = textareaEl.value.trim() || DEFAULT_LETTER;
+        localStorage.setItem(STORAGE_KEY_LETTER, updated);
+        displayEl.textContent = updated;
+        isEditing = false;
+        displayEl.classList.remove('hidden');
+        editorEl.classList.add('hidden');
+        toggleLabel.textContent = 'Customize Note';
+        showToast('Apology note saved ❤️');
+      });
+
+      const fileInput = document.getElementById('mediaFileInput');
+      const fileLabel = document.getElementById('filePickerLabel');
+      const urlInput = document.getElementById('mediaUrlInput');
+      const dateInput = document.getElementById('mediaDateInput');
+      const captionInput = document.getElementById('mediaCaptionInput');
+      const form = document.getElementById('addMediaForm');
+
+      let selectedFileData = null;
+
+      fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        fileLabel.textContent = `Selected: ${file.name}`;
+        const isVideo = file.type.startsWith('video/');
+
+        if (isVideo) {
+          selectedFileData = {
+            type: 'video',
+            src: URL.createObjectURL(file)
+          };
+        } else {
+          const reader = new FileReader();
+          reader.onload = (ev) => {
+            selectedFileData = {
+              type: 'image',
+              src: ev.target.result
+            };
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const urlVal = urlInput.value.trim();
+        const captionVal = captionInput.value.trim();
+        const dateVal = dateInput.value.trim() || 'Special Moment';
+
+        let finalMedia = null;
+        if (selectedFileData) {
+          finalMedia = selectedFileData;
+        } else if (urlVal) {
+          const isVideoUrl = /\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(urlVal);
+          finalMedia = {
+            type: isVideoUrl ? 'video' : 'image',
+            src: urlVal
+          };
+        }
+
+        if (!finalMedia) {
+          showToast('Please pick a photo/video or enter a URL');
+          return;
+        }
+
+        const newId = `mem-${Date.now()}`;
+        const newMemory = {
+          id: newId,
+          type: finalMedia.type,
+          src: finalMedia.src,
+          date: dateVal,
+          caption: captionVal
+        };
+
+        appState.memories.unshift(newMemory);
+        appState.deckIds.unshift(newId);
+        saveState();
+
+        form.reset();
+        selectedFileData = null;
+        fileLabel.textContent = 'Tap to select image (.jpg, .png, .webp) or video (.mp4, .mov)';
+
+        renderAll();
+        showToast('Added to Swipe Deck! ✨');
+        switchTab('explore');
+      });
+    }
+
+    function renderDeck() {
+      const container = document.getElementById('deckContainer');
+      const emptyState = document.getElementById('emptyDeckState');
+      const controls = document.getElementById('deckControls');
+      const undoBtn = document.getElementById('btnUndo');
+
+      container.innerHTML = '';
+      undoBtn.disabled = appState.history.length === 0;
+
+      const deckMemories = appState.deckIds
+        .map(id => appState.memories.find(m => m.id === id))
+        .filter(Boolean);
+
+      if (deckMemories.length === 0) {
+        container.classList.add('hidden');
+        controls.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+        refreshIcons();
+        return;
+      }
+
+      container.classList.remove('hidden');
+      controls.classList.remove('hidden');
+      emptyState.classList.add('hidden');
+
+      // Render top 3 cards in reverse order so index 0 is on top
+      const visibleSlice = deckMemories.slice(0, 3).reverse();
+
+      visibleSlice.forEach((memory, revIdx) => {
+        const stackIndex = visibleSlice.length - 1 - revIdx; // 0 = top card
+        const card = document.createElement('div');
+        card.className = 'swipe-card flex flex-col';
+        card.dataset.id = memory.id;
+
+        // Visual stacking depth
+        const scale = 1 - stackIndex * 0.045;
+        const translateY = stackIndex * 12;
+        card.style.transform = `translateY(${translateY}px) scale(${scale})`;
+        card.style.zIndex = `${10 - stackIndex}`;
+        if (stackIndex > 0) {
+          card.style.pointerEvents = 'none';
+          card.style.opacity = `${1 - stackIndex * 0.18}`;
+        }
+
+        // Media element (Image or Video)
+        let mediaHTML = '';
+        if (memory.type === 'video') {
+          mediaHTML = `
+            <div class="relative w-full h-[74%] bg-black overflow-hidden">
+              <video
+                src="${memory.src}"
+                ${memory.poster ? `poster="${memory.poster}"` : ''}
+                class="w-full h-full object-cover"
+                playsinline
+                loop
+                muted
+                autoplay
+              ></video>
+              <span class="absolute top-3.5 right-3.5 inline-flex items-center gap-1 rounded-full bg-black/55 backdrop-blur-md px-2.5 py-1 text-[11px] font-semibold text-white">
+                <i data-lucide="video" class="w-3 h-3"></i> Video
+              </span>
+            </div>
+          `;
+        } else {
+          mediaHTML = `
+            <div class="relative w-full h-[74%] bg-blush/40 overflow-hidden">
+              <img
+                src="${memory.src}"
+                alt="${escapeHtml(memory.caption)}"
+                draggable="false"
+                onerror="this.src='https://placehold.co/600x800/FCE7EC/D6456B?text=Memory+For+Bhawna'"
+                class="w-full h-full object-cover select-none"
+              />
+            </div>
+          `;
+        }
+
+        card.innerHTML = `
+          <div class="stamp-badge stamp-favorite">FAVORITE ❤️</div>
+          <div class="stamp-badge stamp-archive">ARCHIVE</div>
+          ${mediaHTML}
+          <div class="flex-1 p-5 flex flex-col justify-center bg-white">
+            <span class="text-[11px] font-bold uppercase tracking-widest text-roseDeep mb-1">
+              ${escapeHtml(memory.date || 'Our Memory')}
+            </span>
+            <p class="font-serif text-base sm:text-lg font-semibold text-ink leading-snug line-clamp-2">
+              ${escapeHtml(memory.caption)}
+            </p>
+          </div>
+        `;
+
+        container.appendChild(card);
+
+        if (stackIndex === 0) {
+          attachCardDragHandlers(card, memory.id);
+        }
+      });
+
+      refreshIcons();
+    }
+
+    function attachCardDragHandlers(card, memoryId) {
+      let startX = 0;
+      let startY = 0;
+      let currentX = 0;
+      let currentY = 0;
+      let isDragging = false;
+      let lastTapTime = 0;
+
+      const favBadge = card.querySelector('.stamp-favorite');
+      const archBadge = card.querySelector('.stamp-archive');
+
+      function onPointerDown(e) {
+        if (e.button && e.button !== 0) return;
+
+        // Detect Double-Tap on mobile/desktop to favorite immediately
+        const now = Date.now();
+        if (now - lastTapTime < 280) {
+          isDragging = false;
+          triggerHaptic([30, 40, 30]);
+          const popHeart = document.createElement('div');
+          popHeart.className = 'double-tap-heart text-6xl drop-shadow-lg';
+          popHeart.textContent = '❤️';
+          card.appendChild(popHeart);
+          setTimeout(() => completeSwipe(card, memoryId, 'favorite'), 220);
+          lastTapTime = 0;
+          return;
+        }
+        lastTapTime = now;
+
+        isDragging = true;
+        card.classList.remove('animating');
+        if (e.pointerId && card.setPointerCapture) {
+          try { card.setPointerCapture(e.pointerId); } catch (_) {}
+        }
+        startX = e.clientX;
+        startY = e.clientY;
+      }
+
+      function onPointerMove(e) {
+        if (!isDragging) return;
+        currentX = e.clientX - startX;
+        currentY = e.clientY - startY;
+
+        const rotate = currentX * 0.055;
+        card.style.transform = `translate(${currentX}px, ${currentY * 0.35}px) rotate(${rotate}deg)`;
+
+        // Update stamp opacity proportionally
+        const threshold = 90;
+        if (currentX > 15) {
+          favBadge.style.opacity = Math.min(1, (currentX - 15) / threshold);
+          archBadge.style.opacity = 0;
+        } else if (currentX < -15) {
+          archBadge.style.opacity = Math.min(1, (-currentX - 15) / threshold);
+          favBadge.style.opacity = 0;
+        } else {
+          favBadge.style.opacity = 0;
+          archBadge.style.opacity = 0;
+        }
+      }
+
+      function onPointerUp(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        if (e && e.pointerId && card.releasePointerCapture) {
+          try { card.releasePointerCapture(e.pointerId); } catch (_) {}
+        }
+        card.classList.add('animating');
+
+        const swipeThreshold = 95;
+        if (currentX > swipeThreshold) {
+          triggerHaptic(35);
+          completeSwipe(card, memoryId, 'favorite');
+        } else if (currentX < -swipeThreshold) {
+          triggerHaptic(20);
+          completeSwipe(card, memoryId, 'archive');
+        } else {
+          // Snap back smoothly
+          card.style.transform = 'translate(0px, 0px) rotate(0deg)';
+          favBadge.style.opacity = 0;
+          archBadge.style.opacity = 0;
+        }
+        currentX = 0;
+        currentY = 0;
+      }
+
+      // Unified Pointer Events work cleanly across iOS Safari, Android Chrome, and Desktop without listener leaks
+      card.addEventListener('pointerdown', onPointerDown);
+      card.addEventListener('pointermove', onPointerMove);
+      card.addEventListener('pointerup', onPointerUp);
+      card.addEventListener('pointercancel', onPointerUp);
+    }
+
+    function completeSwipe(cardEl, memoryId, action) {
+      const flyX = action === 'favorite' ? window.innerWidth * 0.95 : -window.innerWidth * 0.95;
+      const flyRot = action === 'favorite' ? 24 : -24;
+
+      if (cardEl) {
+        const favBadge = cardEl.querySelector('.stamp-favorite');
+        const archBadge = cardEl.querySelector('.stamp-archive');
+        if (action === 'favorite' && favBadge) favBadge.style.opacity = 1;
+        if (action === 'archive' && archBadge) archBadge.style.opacity = 1;
+
+        cardEl.classList.add('animating');
+        cardEl.style.transform = `translate(${flyX}px, 40px) rotate(${flyRot}deg)`;
+        cardEl.style.opacity = '0';
+      }
+
+      if (action === 'favorite') {
+        const rect = cardEl ? cardEl.getBoundingClientRect() : { left: window.innerWidth / 2, top: window.innerHeight / 2, width: 0, height: 0 };
+        triggerHeartBurst(rect.left + rect.width / 2, rect.top + rect.height / 2);
+        showToast('Added to Favorites ❤️');
+      } else {
+        showToast('Moved to Archive');
+      }
+
+      setTimeout(() => {
+        appState.deckIds = appState.deckIds.filter(id => id !== memoryId);
+        if (action === 'favorite') {
+          if (!appState.favoriteIds.includes(memoryId)) appState.favoriteIds.unshift(memoryId);
+          appState.archiveIds = appState.archiveIds.filter(id => id !== memoryId);
+        } else {
+          if (!appState.archiveIds.includes(memoryId)) appState.archiveIds.unshift(memoryId);
+          appState.favoriteIds = appState.favoriteIds.filter(id => id !== memoryId);
+        }
+        appState.history.push({ id: memoryId, action });
+        saveState();
+        renderAll();
+      }, 280);
+    }
+
+    function triggerTopCardAction(action) {
+      const topCard = document.querySelector('#deckContainer .swipe-card:last-child');
+      if (!topCard) return;
+      const memoryId = topCard.dataset.id;
+      completeSwipe(topCard, memoryId, action);
+    }
+
+    function undoLastSwipe() {
+      const last = appState.history.pop();
+      if (!last) return;
+
+      appState.favoriteIds = appState.favoriteIds.filter(id => id !== last.id);
+      appState.archiveIds = appState.archiveIds.filter(id => id !== last.id);
+      if (!appState.deckIds.includes(last.id)) {
+        appState.deckIds.unshift(last.id);
+      }
+
+      saveState();
+      renderAll();
+      showToast('Card restored to deck ↩️');
+    }
+
+    function resetAllCards() {
+      appState.deckIds = appState.memories.map(m => m.id);
+      appState.favoriteIds = [];
+      appState.archiveIds = [];
+      appState.history = [];
+      saveState();
+      renderAll();
+      switchTab('explore');
+      showToast('All memories reset to deck ✨');
+    }
+
+    // =========================================================================
+    // 8. RENDER ALL & HELPERS
+    // =========================================================================
+    function updateBadges() {
+      document.getElementById('badgeExplore').textContent = appState.deckIds.length;
+      document.getElementById('badgeSongs').textContent = songMemories.length;
+      document.getElementById('badgeFavorites').textContent = appState.favoriteIds.length;
+      document.getElementById('badgeArchive').textContent = appState.archiveIds.length;
+
+      document.getElementById('mobileBadgeSongs').textContent = songMemories.length;
+      document.getElementById('mobileBadgeFav').textContent = appState.favoriteIds.length;
+      document.getElementById('mobileBadgeArch').textContent = appState.archiveIds.length;
+    }
+
+    function renderAll() {
+      updateBadges();
+      renderDeck();
+      renderSongs();
+      renderPromiseCards();
+      renderCollectionGrid('favoritesGrid', 'favoritesEmpty', 'favCountLabel', appState.favoriteIds, 'favorites');
+      renderCollectionGrid('archiveGrid', 'archiveEmpty', 'archCountLabel', appState.archiveIds, 'archive');
+      refreshIcons();
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    // Wire up global controls on DOM load
+    window.addEventListener('DOMContentLoaded', () => {
+      loadState();
+      loadSongs();
+      initAmbientBackground();
+      initLoveGate();
+      initTabs();
+      initSongForm();
+      initLetterAndMediaForm();
+      renderAll();
+
+      document.getElementById('btnSwipeLeft').addEventListener('click', () => triggerTopCardAction('archive'));
+      document.getElementById('btnSwipeRight').addEventListener('click', () => triggerTopCardAction('favorite'));
+      document.getElementById('btnUndo').addEventListener('click', undoLastSwipe);
+
+      document.getElementById('closeLightbox').addEventListener('click', closeLightboxModal);
+      document.getElementById('lightboxModal').addEventListener('click', (e) => {
+        if (e.target.id === 'lightboxModal') closeLightboxModal();
+      });
+
+      // Keyboard arrow support on Explore tab
+      window.addEventListener('keydown', (e) => {
+        const exploreVisible = !document.getElementById('tab-explore').classList.contains('hidden');
+        const gateHidden = document.getElementById('loveGateOverlay').style.display === 'none';
+        if (!exploreVisible || !gateHidden) return;
+
+        if (e.key === 'ArrowLeft') triggerTopCardAction('archive');
+        if (e.key === 'ArrowRight') triggerTopCardAction('favorite');
+      });
+
+      refreshIcons();
+    });
+  </script>
+</body>
+</html>
